@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+//TODO: Se quita REACT porque estaba mal importado, no se debe usar import REACT from 'react' en React 17+
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';

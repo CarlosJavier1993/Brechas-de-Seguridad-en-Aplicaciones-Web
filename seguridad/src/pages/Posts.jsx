@@ -1,3 +1,6 @@
+// TODO: Cambié el renderizado de posts para prevenir XSS.
+// Eliminé `dangerouslySetInnerHTML` y muestro el contenido como texto.
+// Razón: evitar ejecución de HTML/JS inyectado en los posts.
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -17,8 +20,7 @@ function Posts() {
         {posts.map(post => (
           <div key={post.id} className="post-card">
             <h3>{post.title}</h3>
-            {/* Renderizado vulnerable a XSS */}
-            <div style={{marginBottom: 8}} dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div style={{marginBottom: 8, whiteSpace: 'pre-wrap'}}>{post.content}</div>
             <small>Autor: {post.author}</small>
           </div>
         ))}
