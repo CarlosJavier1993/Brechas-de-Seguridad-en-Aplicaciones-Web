@@ -17,8 +17,12 @@ function Posts() {
         {posts.map(post => (
           <div key={post.id} className="post-card">
             <h3>{post.title}</h3>
-            {/* Renderizado vulnerable a XSS */}
-            <div style={{marginBottom: 8}} dangerouslySetInnerHTML={{ __html: post.content }} />
+            {/* TODO: Renderizado seguro como texto plano en lugar de HTML.
+                Previamente: dangerouslySetInnerHTML permitía inyección de JavaScript (<script>alert('XSS')</script>).
+                Ahora: whiteSpace: 'pre-wrap' preserva formato pero renderiza como texto seguro. */}
+            <div style={{marginBottom: 8, whiteSpace: 'pre-wrap'}}>
+              {post.content}
+            </div>
             <small>Autor: {post.author}</small>
           </div>
         ))}

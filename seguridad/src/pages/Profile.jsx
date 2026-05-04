@@ -21,8 +21,10 @@ function Profile({ token }) {
       <h2>Perfil</h2>
       <div style={{marginBottom: 8}}><b>Usuario:</b> {profile.username}</div>
       <div style={{marginBottom: 8}}><b>Email:</b> {profile.email}</div>
-      <div style={{marginBottom: 8}}><b>Contraseña:</b> {profile.password}</div>
       <div><b>ID:</b> {profile.id}</div>
+      {/* TODO: No mostramos el password en el perfil.
+          Previamente: Se mostraba {profile.password} (exposición de datos sensibles).
+          Nunca debe exponerse password ni siquiera si está hasheado. */}
     </div>
   );
 }
